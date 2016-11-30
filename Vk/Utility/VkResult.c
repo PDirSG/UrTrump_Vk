@@ -1,4 +1,4 @@
-//Mostly stolen from GLFW...
+//I stole it from GLFW...
 
 const char *VkGetResultString(VkResult result)
 {
@@ -51,6 +51,6 @@ const char *VkGetResultString(VkResult result)
         case VK_ERROR_VALIDATION_FAILED_EXT:
             return "A validation layer found an error";
         default:
-			return "Unknown Vulkan error";
+	    return "Unknown Vulkan error";
     }
 }
