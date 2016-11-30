@@ -18,7 +18,7 @@ _Bool initialize_window(void)
 
 int main(void)
 {	
-    if(initializeVulkan() != 1)
+	if(initializeVulkan() != 1)
 	{
 		return EXIT_FAILURE;
 	}
