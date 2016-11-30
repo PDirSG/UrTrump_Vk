@@ -283,7 +283,7 @@ _Bool setInstanceCreateInfo(void)
 		if(VkGetRequiredInstanceExtensions() != 1 || VkGetOptionalInstanceLayers() != 1)
 			return 0;
 
-			InstanceCreateInfo.enabledExtensionCount = RequiredInstanceExtensionCount;
+		InstanceCreateInfo.enabledExtensionCount = RequiredInstanceExtensionCount;
     		InstanceCreateInfo.ppEnabledExtensionNames = RequiredInstanceExtensions;
 
     		InstanceCreateInfo.enabledLayerCount = OptionalInstanceLayerCount;
@@ -316,11 +316,10 @@ void destroyDebugReportCallback(void)
 
 uint32_t debugReportCallback
 	(
-	VkDebugReportFlagsEXT 
-				 flags,
+	VkDebugReportFlagsEXT flags,
 
 	VkDebugReportObjectTypeEXT objectType, 
-					  uint64_t object,
+		uint64_t object,
 
 	size_t location, int32_t messageCode, const char *layerPrefix,
 		const char *message, 
@@ -362,7 +361,7 @@ _Bool initializeDebugReportCallback(void)
 		VK_DEBUG_REPORT_ERROR_BIT_EXT | VK_DEBUG_REPORT_WARNING_BIT_EXT | VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT;
 
 	DebugReportCallbackCreateInfo.pfnCallback = 
-   &debugReportCallback; 
+       &debugReportCallback; 
 	Game.Result = vkCreateDebugReportCallback(Game.Instance, &DebugReportCallbackCreateInfo, NULL, &Game.DebugReportCallback);
 
 	if(Game.Result != 0)
