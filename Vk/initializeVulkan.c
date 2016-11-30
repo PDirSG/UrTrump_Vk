@@ -143,10 +143,10 @@ _Bool VkGetRequiredInstanceExtensions(void)
 	{
 		RequiredInstanceExtensions[0] = VK_KHR_SURFACE_EXTENSION_NAME; RequiredInstanceExtensions[1] = VK_KHR_XLIB_SURFACE_EXTENSION_NAME;
 #if defined(_VK_DEBUG_)
-        	RequiredInstanceExtensions[2] = 
+		RequiredInstanceExtensions[2] = 
 			VK_EXT_DEBUG_REPORT_EXTENSION_NAME;
 
-        	RequiredInstanceExtensionCount = 3;
+		RequiredInstanceExtensionCount = 3;
 #elif !defined(_VK_DEBUG_)
 		RequiredInstanceExtensionCount = 2;
 #endif
@@ -184,13 +184,13 @@ _Bool VkGetOptionalInstanceLayers(void)
 
 	VkLayerProperties *InstanceLayerProperties;
 	{
-        	InstanceLayers = malloc(InstanceLayerCount * sizeof(const char *));
+		InstanceLayers = malloc(InstanceLayerCount * sizeof(const char *));
 
 		if(InstanceLayers == NULL)
 		{
-                	__Log("Error: Memory allocation failed for InstanceLayers");
+			__Log("Error: Memory allocation failed for InstanceLayers");
 
-	       		free(RequiredInstanceExtensions);
+			free(RequiredInstanceExtensions);
 			return 0;
 		}
 
@@ -198,10 +198,10 @@ _Bool VkGetOptionalInstanceLayers(void)
 
 		if(InstanceLayerProperties == NULL)
 		{
-	    		__Log("Error: Memory allocation failed for LayerProperties");
+			__Log("Error: Memory allocation failed for LayerProperties");
 			free(InstanceLayers);
 
-	      	 	free(RequiredInstanceExtensions);
+			free(RequiredInstanceExtensions);
 			return 0;
 		}
 	}
@@ -228,11 +228,11 @@ _Bool VkGetOptionalInstanceLayers(void)
 			= VK_TRUE;
 	for(uint32_t I = 0; I < InstanceLayerCount; I++)
 	{
-	    	if(strcmp(InstanceLayers[I], "VK_LAYER_LUNARG_standard_validation"))
+		if(strcmp(InstanceLayers[I], "VK_LAYER_LUNARG_standard_validation"))
 	   	{
-	        	ValidationLayerNotExists = VK_FALSE;
+			ValidationLayerNotExists = VK_FALSE;
 			break;
-	    	}
+		}
 	}
 	free(InstanceLayers);
 
@@ -283,7 +283,7 @@ _Bool setInstanceCreateInfo(void)
 		if(VkGetRequiredInstanceExtensions() != 1 || VkGetOptionalInstanceLayers() != 1)
 			return 0;
 
-		InstanceCreateInfo.enabledExtensionCount = RequiredInstanceExtensionCount;
+			InstanceCreateInfo.enabledExtensionCount = RequiredInstanceExtensionCount;
     		InstanceCreateInfo.ppEnabledExtensionNames = RequiredInstanceExtensions;
 
     		InstanceCreateInfo.enabledLayerCount = OptionalInstanceLayerCount;
@@ -314,12 +314,13 @@ void destroyDebugReportCallback(void)
 #include \
 	 "Utility/VkObjectType.c"
 
-uint32_t debugReportCallback(
+uint32_t debugReportCallback
+	(
 	VkDebugReportFlagsEXT 
-		     flags,
+				 flags,
 
 	VkDebugReportObjectTypeEXT objectType, 
-			      uint64_t object,
+			  		  uint64_t object,
 
 	size_t location, int32_t messageCode, const char *layerPrefix,
 		const char *message, 
@@ -361,7 +362,7 @@ _Bool initializeDebugReportCallback(void)
 		VK_DEBUG_REPORT_ERROR_BIT_EXT | VK_DEBUG_REPORT_WARNING_BIT_EXT | VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT;
 
 	DebugReportCallbackCreateInfo.pfnCallback = 
-       &debugReportCallback; 
+   &debugReportCallback; 
 	Game.Result = vkCreateDebugReportCallback(Game.Instance, &DebugReportCallbackCreateInfo, NULL, &Game.DebugReportCallback);
 
 	if(Game.Result != 0)
