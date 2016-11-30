@@ -13,7 +13,8 @@ struct Application
 	//...
 } Game;
 
-#include "Utility/VkResult.c"
+#include \
+	 "Utility/VkResult.c"
 
 #define __Log(message) \
 	printf("%s \n", message)
@@ -312,7 +313,7 @@ void destroyDebugReportCallback(void)
 }
 
 #include \
-	 "Utility/VkObjectType.c"
+     "Utility/VkObjectType.c"
 
 uint32_t debugReportCallback
 	(
