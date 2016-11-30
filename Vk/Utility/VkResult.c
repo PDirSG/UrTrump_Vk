@@ -1,4 +1,6 @@
-const char* VkGetResultString(VkResult result)
+//Mostly stolen from GLFW...
+
+const char *VkGetResultString(VkResult result)
 {
     switch (result)
     {
